@@ -48,11 +48,13 @@ func HandleUpdate(c echo.Context) error {
 	isCommand := update.Message.Entities != nil
 	if isCommand {
 		parts := strings.Split(text, " ")
-		command := parts[0]
-		message := parts[1]
-		if command == "/task" {
-			logger.Info("/task", zap.String("message", message))
-			things.AddTask(message)
+		if len(parts) >= 2 {
+			command := parts[0]
+			message := parts[1]
+			if command == "/task" {
+				logger.Info("/task", zap.String("message", message))
+				things.AddTask(message)
+			}
 		}
 	}
 
