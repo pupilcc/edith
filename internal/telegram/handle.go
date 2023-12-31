@@ -47,7 +47,7 @@ func HandleUpdate(c echo.Context) error {
 
 	isCommand := update.Message.Entities != nil
 	if isCommand {
-		parts := strings.Split(text, " ")
+		parts := strings.SplitN(text, " ", 2)
 		if len(parts) >= 2 {
 			command := parts[0]
 			message := parts[1]
