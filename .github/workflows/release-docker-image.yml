@@ -33,7 +33,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            ghcr.io/${{ github.repository }}:latest
+            ghcr.io/${{ github.event.repository.full_name }}:latest
 
       - name: Build and push latest images
         id: docker_build
